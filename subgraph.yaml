@@ -1,6 +1,4 @@
-specVersion: 1.0.0
-indexerHints:
-  prune: auto
+specVersion: 0.0.5
 schema:
   file: ./schema.graphql
 dataSources:
@@ -16,20 +14,13 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Approval
-        - Transfer
-        - Deposit
-        - Withdrawal
+        - Token
+        - Account
+        - TokenBalance
       abis:
         - name: WETH
           file: ./abis/WETH.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApproval
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-        - event: Deposit(indexed address,uint256)
-          handler: handleDeposit
-        - event: Withdrawal(indexed address,uint256)
-          handler: handleWithdrawal
       file: ./src/weth.ts
